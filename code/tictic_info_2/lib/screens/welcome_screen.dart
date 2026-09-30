@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic_info_2/styles/size.dart';
+import 'package:tictic_info_2/styles/texts.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -32,9 +33,9 @@ class WelcomeScreen extends StatelessWidget {
                       kLogoWelcomeSubdiviser,
                 ),
               ),
-              Text('TEST 1'),
-              Text('TEST 2'),
-              Text('TEST 3'),
+              Text('TEST 1', style: kTitleWelcomePage),
+              Text('TEST 2', style: kTitleWelcomePage),
+              Text('TEST 3', style: kTitleWelcomePage),
             ],
           ),
         ),
