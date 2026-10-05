@@ -22,13 +22,13 @@ class _CarouselState extends State<Carousel> {
     return Column(
       children: [
         SizedBox(
-          height: 60,
+          height: 60, //mn
           child: PageView.builder(
             controller: controller,
             itemCount: _items.length,
             itemBuilder: (context, i) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0), //mn
                 child: Text(_items[i]),
               );
             },
@@ -40,7 +40,7 @@ class _CarouselState extends State<Carousel> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0), //mn
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -48,17 +48,17 @@ class _CarouselState extends State<Carousel> {
                 GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
-                    controller.animateToPage(i, duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+                    controller.animateToPage(i, duration: Duration(milliseconds: 300), curve: Curves.easeInOut); //mn
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0), //mn
                     child: Container(
                       decoration: BoxDecoration(
                         color: _currentIndex == i ? kCarouselLineActive : kCarouselLineInactive,
                       ),
-                      height: 2,
+                      height: 2, //mn
                       width:
-                      (MediaQuery.of(context).size.width / _items.length) - 32,
+                      (MediaQuery.of(context).size.width / _items.length) - 32, //mn
                     ),
                   ),
                 ),
