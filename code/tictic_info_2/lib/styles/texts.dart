@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:tictic_info_2/styles/colors.dart';
+
+import 'colors.dart';
 
 const kBaseFontSize = 16.0;
 
@@ -11,19 +12,36 @@ const TextStyle kTitleWelcomePage = TextStyle(
   fontSize: kBaseFontSize * 2,
 );
 
-const TextStyle kBtnDarkText = TextStyle(
-  fontWeight: FontWeight.w400,
+const TextStyle kCarouselText = TextStyle(
   fontFamily: 'Poppins',
-  fontSize: kBaseFontSize,
-  color: kWhite
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.italic,
+  color: kDarkGreen,
+  height: 1.6,
+  letterSpacing: 0.4,
 );
 
-const TextStyle kBtnLightText = TextStyle(
-  fontWeight: FontWeight.w400,
+const TextStyle kButtonMainColor = TextStyle(
+  color: Color.fromRGBO(255, 255, 255, 1.0),
   fontFamily: 'Poppins',
   fontSize: kBaseFontSize,
-  color: kDarkGreen
 );
 
+const TextStyle kButtonMainLightColor = TextStyle(
+  color: Color.fromRGBO(0, 0, 0, 1.0),
+  fontFamily: 'Poppins',
+  fontSize: kBaseFontSize,
+);
 
+const TextStyle kTextInputLabel = TextStyle(
+  color: kBlack,
+  fontSize: 24,
+  fontFamily: 'Poppins',
+);
+
+const TextStyle kTextLinkStyle = TextStyle(
+  fontSize: 18,
+  decoration: TextDecoration.underline,
+);
 

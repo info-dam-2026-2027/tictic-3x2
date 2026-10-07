@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tictic_info_2/styles/colors.dart';
+import 'package:tictic_info_2/styles/paddings.dart';
+
+import '../styles/colors.dart';
+import '../styles/sizes.dart';
+import '../styles/texts.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({super.key});
@@ -10,11 +14,18 @@ class Carousel extends StatefulWidget {
 
 class _CarouselState extends State<Carousel> {
   // Déclarer un tableau
-  final _items = ['Test 1', 'Test 2', 'Test 3', 'Test 4'];
+  final _items = [
+    'Les bons comptes font les bons amis !',
+    'Partagez les dépenses, pas les soucis.',
+    'Vos dépenses à plusieurs, simplement équilibrées.',
+    'Profitez ensemble, on s’occupe des comptes !',
+    'Moins de calculs, plus de bons moments.'
+  ];
 
-  final PageController controller = PageController(); // Déclarer le controller
+  // Déclarer le controller
+  final PageController controller = PageController();
 
-  // Déclarer index actuel
+  // Déclarer le current index des barres
   int _currentIndex = 0;
 
   @override
@@ -22,15 +33,12 @@ class _CarouselState extends State<Carousel> {
     return Column(
       children: [
         SizedBox(
-          height: 60, //mn
+          height: kCarouselHeight,
           child: PageView.builder(
             controller: controller,
             itemCount: _items.length,
             itemBuilder: (context, i) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0), //mn
-                child: Text(_items[i]),
-              );
+              return Center(child: Text(_items[i], style: kCarouselText));
             },
             onPageChanged: (i) {
               setState(() {
@@ -40,7 +48,7 @@ class _CarouselState extends State<Carousel> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0), //mn
+          padding: const EdgeInsets.symmetric(horizontal: kPaddingM),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -48,17 +56,22 @@ class _CarouselState extends State<Carousel> {
                 GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
-                    controller.animateToPage(i, duration: Duration(milliseconds: 300), curve: Curves.easeInOut); //mn
+                    controller.animateToPage(
+                      i,
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeInOut,
+                    );
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0), //mn
+                    padding: const EdgeInsets.all(kPaddingXS),
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: _currentIndex == i ? kCarouselLineActive : kCarouselLineInactive,
-                      ),
-                      height: 2, //mn
+                      height: 3,
                       width:
-                      (MediaQuery.of(context).size.width / _items.length) - 32, //mn
+                          (MediaQuery.of(context).size.width / _items.length) -
+                          32,
+                      decoration: BoxDecoration(
+                        color: _currentIndex == i ? kDarkGreen : kWhite,
+                      ),
                     ),
                   ),
                 ),

@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tictic_info_2/styles/colors.dart';
-import 'package:tictic_info_2/styles/size.dart';
-import 'package:tictic_info_2/widgets/carousel.dart';
-import 'package:tictic_info_2/widgets/custom_btn.dart';
+import 'package:tictic_info_2/screens/register_screen.dart';
+import 'package:tictic_info_2/widgets/welcome/separator_text.dart';
+
+import '../styles/paddings.dart';
+import '../styles/sizes.dart';
+import '../widgets/carousel.dart';
+import '../widgets/logo_application.dart';
+import '../widgets/main_button.dart';
+import 'home_screen.dart';
+import 'login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+
+  static final String routeName = '/';
 
   @override
   Widget build(BuildContext context) {
@@ -14,53 +21,54 @@ class WelcomeScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/img/back1.png'),
             fit: BoxFit.cover,
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: kLogoWelcomePaddingTop,
-                  bottom: kLogoWelcomePaddingBottom,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: kWelcomeLogoPaddingTop,
+                    bottom: kWelcomeLogoPaddingBottom,
+                  ),
+                  child: LogoApplication(),
                 ),
-                child: SvgPicture.asset(
-                  'assets/icons/logo.svg',
-                  width:
-                      MediaQuery.of(context).size.width /
-                      kLogoWelcomeSubdiviser,
+                Carousel(),
+                SizedBox(height: kSpacer * 4,),
+                MainButton(
+                  onTap: () => {Navigator.pushNamed(context, HomeScreen.routeName)},
+                  label: 'Continuer sans compte',
+                  color: 'dark',
                 ),
-              ),
-              Carousel(),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/home');
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: kWhite,
-                  backgroundColor: kDarkGreen,
+                SeparatorText(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kPaddingM,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MainButton(
+                        onTap: () => {Navigator.pushNamed(context, LoginScreen.routeName)},
+                        label: 'Se connecter',
+                        color: 'light',
+                      ),
+                      SizedBox(width: kSpacer,),
+                      MainButton(
+                        onTap: () => {Navigator.pushNamed(context, RegisterScreen.routeName)},
+                        label: 'S’inscrire',
+                        color: 'light',
+                      ),
+                    ],
+                  ),
                 ),
-                child: Text('Continuer sans compte'),
-              ),
-              CustomBtn(
-                onTap: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-                label: 'Se connecter',
-                isDark: false,
-              ),
-              CustomBtn(
-                onTap: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                label: 'Créer un compte',
-                isDark: false,
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
